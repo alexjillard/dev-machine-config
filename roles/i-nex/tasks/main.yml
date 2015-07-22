@@ -1,0 +1,17 @@
+---
+- name: Check if i-nex is installed
+  command: dpkg-query -W i-nex
+  register: i_nex_check_deb
+  failed_when: i_nex_check_deb.rc > 1
+  changed_when: i_nex_check_deb.rc == 1
+
+- name: Download i-nex
+  get_url:
+    url="https://launchpad.net/i-nex/trunk/7.4.0/+download/i-nex_7.4.0%2Bbzr855%2B20140813~ubuntu14.04.1_amd64.deb"
+    dest="/home/{{ ansible_env.USER }}/Downloads/{{ my_package_name }}.deb"
+  when: i_nex_check_deb.rc == 1
+
+- name: Install i-nex
+  apt: deb="/home/{{ ansible_env.USER }}/Downloads/i-nex_7.4.0%2Bbzr855%2B20140813~ubuntu14.04.1_amd64.deb"
+  become: true
+  when: i_nex_check_deb.rc == 1

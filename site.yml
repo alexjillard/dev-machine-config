@@ -1,0 +1,52 @@
+---
+- hosts: all
+  vars:
+    clamav_clamtk_install: true
+    pycharm_version: 4.5.3
+  roles:
+    - role: common
+      tags: ['common']
+      become: true
+    - role: devbox.chrome
+      google_talkplugin_enabled: yes
+      google_agent_pkg_state: installed
+      become: true
+    - role: jgrowl.hipchat
+      become: true
+    - role: denkhaus.virtualbox
+      become: true
+    - role: denkhaus.vagrant
+      become: true
+    - role: martinmicunda.nodejs
+      become: true
+    - role: martinmicunda.gulp
+      become: true
+    - role: igor_mukhin.clamav
+      become: true
+      tags: ['clamav']
+    - role: tersmitten.pycharm
+      become: true
+      tags: ['pycharm']
+    - role: prezto
+      tags: ['prezto']
+    - role: powerline
+      tags: ['powerline']
+    - role: adobe_source_code
+      tags: ['adobe']
+    - role: ubuntu-tweak
+      become: true
+      tags: ['ubuntu-tweak']
+    - role: i-nex
+      become: true
+      tags: ['i-nex']
+    - role: bobbyrenwick.pip
+      tags: ['pip']
+    - role: virtualenvs
+      become: true
+      tags: ['pip']
+    - role: server-admin
+      become: true
+      tags: ['server-admin']
+    - role: iris
+      become: true
+      tags: ['iris']

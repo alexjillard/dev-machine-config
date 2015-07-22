@@ -1,0 +1,99 @@
+---
+- name: Install aptitude
+  apt: pkg=aptitude state=installed
+
+- name: Update apt
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Upgrade packages
+  apt: upgrade=yes
+
+- name: Install Drivers
+  command: ubuntu-drivers autoinstall
+
+- name: Install default packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - vim
+    - git
+    - python-dev
+    - python-setuptools
+    - python-pycurl
+    - python-software-properties
+    - python-apt
+    - build-essential
+    - gcc
+    - pidgin
+    - openjdk-7-jdk
+    - filezilla
+    - conky
+    - bum
+    - bleachbit
+    - terminator
+    - shutter
+    - wallch
+    - gimp
+    - unity-tweak-tool
+    - gnome-tweak-tool
+    - indicator-multiload
+    - vlc
+    - shutter
+    - browser-plugin-vlc
+    - ubuntu-restricted-extras
+    - tig
+    - gitg
+    - gufw
+    - htop
+
+- name: Add Extra Apt Repos
+  apt_repository: repo="{{ item }}" state=present
+  with_items:
+    - 'deb-src http://archive.canonical.com/ubuntu vivid partner'
+    - 'deb http://archive.canonical.com/ubuntu vivid partner'
+    - 'ppa:webupd8team/atom'
+    - 'ppa:yorba/ppa'
+    - 'ppa:shutter/ppa'
+
+- name: Custom Repo Apps
+  apt: pkg={{ item }} state=installed update_cache=True
+  with_items:
+    - skype
+    - atom
+    - shutter
+
+- name: Install Media Codecs
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - gstreamer0.10-plugins-ugly
+    - gxine
+    - libdvdread4
+    - icedax
+    - tagtool
+    - easytag
+    - id3tool
+    - lame
+    - nautilus-script-audio-convert
+    - libmad0
+    - mpg321
+    - gstreamer1.0-libav
+
+- name: Install Archive Management
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - unrar
+    - zip
+    - unzip
+    - p7zip-full
+    - p7zip-rar
+    - sharutils
+    - rar
+
+- name: Update General Settings
+  tags: ['gen-settings']
+  command: "{{ item }}"
+  with_items:
+    - "gsettings set com.canonical.Unity.Lenses remote-content-search none"
+    - "gsettings set com.canonical.unity-greeter draw-grid false"
+    - "gsettings set com.canonical.desktop.interface scrollbar-mode normal"
+
+#http://download.jetbrains.com/python/pycharm-professional-4.0.6.tar.gz

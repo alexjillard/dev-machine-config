@@ -1,0 +1,24 @@
+---
+- name: checkout iris
+  git:
+    repo: git://git@github.com:alexjillard/iris
+    dest: ~/git_repos/iris
+    update: no
+
+- name: checkout iris upstream
+  git:
+    repo: git://git@github.com:CypherSystems/iris
+    dest: ~/git_repos/iris-upstream
+    update: no
+
+- name: checkout iris-tenants
+  git:
+    repo: git://git@github.com:alexjillard/iris-tenants
+    dest: ~/git_repos/iris-tenants
+    update: no
+
+- name: checkout csg-provision
+  git:
+    repo: git://git@github.com:CypherSystems/csg-provision
+    dest: ~/git_repos/iris-tenants
+    update: no

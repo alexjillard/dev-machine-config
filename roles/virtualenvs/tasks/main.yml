@@ -1,0 +1,6 @@
+---
+- name: Install virtualenv
+  pip: name=virtualenv state=latest
+
+- name: Create virtualenv root
+  file: path=~/virtualenvs/ state=directory

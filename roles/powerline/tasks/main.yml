@@ -1,0 +1,11 @@
+---
+- name: install powerline
+  pip: name=powerline-status state=present
+  become: true
+
+- name: install powerline font
+  script: install_font.sh
+  args:
+    creates:
+      - "~/.fonts/SourceCodePro-Regular.otf"
+      - "~/.config/fontconfig/conf.d/10-powerline-symbols.conf"

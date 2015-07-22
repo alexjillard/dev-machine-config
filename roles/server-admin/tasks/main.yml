@@ -1,0 +1,5 @@
+---
+- name: Install Fabric to server-admin
+  pip:
+    virtualenv: ~/virtualenvs/server-admin
+    name: fabric

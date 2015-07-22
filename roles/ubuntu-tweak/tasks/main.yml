@@ -1,0 +1,17 @@
+---
+- name: Check if ubuntu-tweak is installed
+  command: dpkg-query -W ubuntu-tweak
+  register: ubuntu_tweak_check_deb
+  failed_when: ubuntu_tweak_check_deb.rc > 1
+  changed_when: ubuntu_tweak_check_deb.rc == 1
+
+- name: Download ubuntu-tweak
+  get_url:
+    url="https://launchpad.net/ubuntu-tweak/0.8.x/0.8.7/+download/ubuntu-tweak_0.8.7-1~trusty2_all.deb"
+    dest="/home/{{ ansible_env.USER }}/Downloads/{{ my_package_name }}.deb"
+  when: ubuntu_tweak_check_deb.rc == 1
+
+- name: Install ubuntu-tweak
+  apt: deb="/home/{{ ansible_env.USER }}/Downloads/ubuntu-tweak_0.8.7-1~trusty2_all.deb"
+  become: true
+  when: ubuntu_tweak_check_deb.rc == 1
