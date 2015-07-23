@@ -23,23 +23,23 @@
     - python-apt
     - build-essential
     - gcc
-    - pidgin
-    - openjdk-7-jdk
-    - filezilla
-    - conky
-    - bum
-    - bleachbit
+    #- pidgin
+    #- openjdk-7-jdk
+    #- filezilla
+    #- conky
+    #- bum
+    #- bleachbit
     - terminator
-    - shutter
-    - wallch
-    - gimp
-    - unity-tweak-tool
-    - gnome-tweak-tool
-    - indicator-multiload
-    - vlc
-    - shutter
-    - browser-plugin-vlc
-    - ubuntu-restricted-extras
+    #- shutter
+    #- wallch
+    #- gimp
+    #- unity-tweak-tool
+    #- gnome-tweak-tool
+    #- indicator-multiload
+    #- vlc
+    #- shutter
+    #- browser-plugin-vlc
+    #- ubuntu-restricted-extras
     - tig
     - gitg
     - gufw
@@ -88,12 +88,12 @@
     - sharutils
     - rar
 
-- name: Update General Settings
-  tags: ['gen-settings']
-  command: "{{ item }}"
-  with_items:
-    - "gsettings set com.canonical.Unity.Lenses remote-content-search none"
-    - "gsettings set com.canonical.unity-greeter draw-grid false"
-    - "gsettings set com.canonical.desktop.interface scrollbar-mode normal"
+#- name: Update General Settings
+#  tags: ['gen-settings']
+#  command: "{{ item }}"
+#  with_items:
+#    - "gsettings set com.canonical.Unity.Lenses remote-content-search none"
+#    - "gsettings set com.canonical.unity-greeter draw-grid false"
+#    - "gsettings set com.canonical.desktop.interface scrollbar-mode normal"
 
 #http://download.jetbrains.com/python/pycharm-professional-4.0.6.tar.gz

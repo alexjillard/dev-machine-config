@@ -11,8 +11,15 @@
       google_talkplugin_enabled: yes
       google_agent_pkg_state: installed
       become: true
+    - role: prezto
+      tags: ['prezto']
+    - role: powerline
+      tags: ['powerline']
+    - role: adobe_source_code
+      tags: ['adobe']
     - role: jgrowl.hipchat
       become: true
+      tags: ['hipchat']
     - role: denkhaus.virtualbox
       become: true
     - role: denkhaus.vagrant
@@ -27,18 +34,13 @@
     - role: tersmitten.pycharm
       become: true
       tags: ['pycharm']
-    - role: prezto
-      tags: ['prezto']
-    - role: powerline
-      tags: ['powerline']
-    - role: adobe_source_code
-      tags: ['adobe']
-    - role: ubuntu-tweak
-      become: true
-      tags: ['ubuntu-tweak']
-    - role: i-nex
-      become: true
-      tags: ['i-nex']
+
+    #- role: ubuntu-tweak
+    #  become: true
+    #  tags: ['ubuntu-tweak']
+    #- role: i-nex
+    #  become: true
+    #  tags: ['i-nex']
     - role: bobbyrenwick.pip
       tags: ['pip']
     - role: virtualenvs
